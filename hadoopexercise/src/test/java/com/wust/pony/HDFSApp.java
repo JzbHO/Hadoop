@@ -22,20 +22,22 @@ public class HDFSApp {
     @Test
     public void mkdir()throws Exception{
 
-        fileSystem=FileSystem.get(new URI(HDFS_PATH),configuration,"localhost");
+        fileSystem=FileSystem.get(configuration);
         System.out.println(fileSystem.toString());
         fileSystem.mkdirs(new Path("/hdfsapi"));
     }
 
 
 
-
+    /*
+    *
+    * */
 
 
     @Before
     public void setUp()throws Exception{
         configuration=new Configuration();
-
+        configuration.set("fs.default.name", "hdfs://localhost:9000");
         System.out.println("setUp");
     }
 
